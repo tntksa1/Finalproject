@@ -3,6 +3,7 @@ using UnityEngine;
 public class CamGyro : MonoBehaviour
 {
     private GameObject camParent;
+    public Transform player; // Reference to player
 
     void Start()
     {
@@ -23,6 +24,10 @@ public class CamGyro : MonoBehaviour
     void Update()
     {
         if (!SystemInfo.supportsGyroscope) return;
+
+        // Make CamParent follow player
+        if (player != null)
+            camParent.transform.position = player.position;
 
         // Rotate the parent on Y axis (yaw)
         camParent.transform.Rotate(0, -Input.gyro.rotationRateUnbiased.y, 0);
