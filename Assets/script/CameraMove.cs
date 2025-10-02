@@ -5,7 +5,7 @@ public class CamGyro : MonoBehaviour
     private GameObject camParent;
     public Transform player; // Reference to player
 
-    void Start()
+    void Awake()
     {
         // Create a parent object to handle yaw separately
         camParent = new GameObject("CamParent");
@@ -35,4 +35,5 @@ public class CamGyro : MonoBehaviour
         // Rotate the camera on X axis (pitch)
         transform.Rotate(-Input.gyro.rotationRateUnbiased.x, 0, 0);
     }
-}
+
+} 
