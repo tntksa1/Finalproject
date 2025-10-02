@@ -4,6 +4,7 @@ public class EnemyAttack : MonoBehaviour
 {
     public float speed = 5f;
     private Transform player;
+    private HealthSystem playerHealth;
 
     void Start()
     {
@@ -12,6 +13,7 @@ public class EnemyAttack : MonoBehaviour
         if (playerObj != null)
         {
             player = playerObj.transform;
+            playerHealth = playerObj.GetComponent<HealthSystem>(); // Get HealthSystem from player
         }
         else
         {
@@ -31,5 +33,14 @@ public class EnemyAttack : MonoBehaviour
 
         // Move toward player
         transform.position += direction * speed * Time.deltaTime;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && playerHealth != null)
+        {
+            playerHealth.TakeDamage(10);  // Call the HealthSystem on player
+            Destroy(gameObject);
+        }
     }
 }
