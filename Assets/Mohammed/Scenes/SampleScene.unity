@@ -1193,6 +1193,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player manger
       objectReference: {fileID: 0}
+    - target: {fileID: 8676460538605447531, guid: db347abfa1d295348b3e4aa4a90ebaea, type: 3}
+      propertyPath: offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676460538605447531, guid: db347abfa1d295348b3e4aa4a90ebaea, type: 3}
+      propertyPath: offset.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
