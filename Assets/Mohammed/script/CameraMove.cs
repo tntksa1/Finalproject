@@ -1,39 +1,74 @@
 using UnityEngine;
+using System.Collections;
 
-public class CamGyro : MonoBehaviour
+public class GyroCamera : MonoBehaviour
 {
-    private GameObject camParent;
-    public Transform player; // Reference to player
+    // STATE
+    private float _initialYAngle = 0f;
+    private float _appliedGyroYAngle = 0f;
+    private float _calibrationYAngle = 0f;
+    private Transform _rawGyroRotation;
+    private float _tempSmoothing;
 
-    void Awake()
+    // SETTINGS
+    [SerializeField] private float _smoothing = 0.1f;
+    [SerializeField] private Transform player;   // reference to player
+    [SerializeField] private Vector3 offset = new Vector3(0f, 2f, -4f); // camera offset
+
+    private IEnumerator Start()
     {
-        // Create a parent object to handle yaw separately
-        camParent = new GameObject("CamParent");
-        camParent.transform.position = transform.position;
+        Input.gyro.enabled = true;
+        Application.targetFrameRate = 60;
+        _initialYAngle = transform.eulerAngles.y;
 
-        // Make the camera child of the new parent
-        transform.SetParent(camParent.transform);
+        _rawGyroRotation = new GameObject("GyroRaw").transform;
+        _rawGyroRotation.position = transform.position;
+        _rawGyroRotation.rotation = transform.rotation;
 
-        // Enable the gyroscope
-        if (SystemInfo.supportsGyroscope)
-            Input.gyro.enabled = true;
-        else
-            Debug.LogWarning("Gyroscope not supported on this device!");
+        // Wait until gyro is active, then calibrate
+        yield return new WaitForSeconds(1);
+        StartCoroutine(CalibrateYAngle());
     }
 
-    void Update()
+    private void LateUpdate()
     {
-        if (!SystemInfo.supportsGyroscope) return;
-
-        // Make CamParent follow player
+        // Make camera follow player position
         if (player != null)
-            camParent.transform.position = player.position;
+        {
+            transform.position = player.position + offset;
+        }
 
-        // Rotate the parent on Y axis (yaw)
-        camParent.transform.Rotate(0, -Input.gyro.rotationRateUnbiased.y, 0);
+        ApplyGyroRotation();
+        ApplyCalibration();
 
-        // Rotate the camera on X axis (pitch)
-        transform.Rotate(-Input.gyro.rotationRateUnbiased.x, 0, 0);
+        transform.rotation = Quaternion.Slerp(transform.rotation, _rawGyroRotation.rotation, _smoothing);
     }
 
-} 
+    private IEnumerator CalibrateYAngle()
+    {
+        _tempSmoothing = _smoothing;
+        _smoothing = 1;
+        _calibrationYAngle = _appliedGyroYAngle - _initialYAngle;
+        yield return null;
+        _smoothing = _tempSmoothing;
+    }
+
+    private void ApplyGyroRotation()
+    {
+        _rawGyroRotation.rotation = Input.gyro.attitude;
+        _rawGyroRotation.Rotate(0f, 0f, 180f, Space.Self);
+        _rawGyroRotation.Rotate(90f, 180f, 0f, Space.World);
+        _appliedGyroYAngle = _rawGyroRotation.eulerAngles.y;
+    }
+
+    private void ApplyCalibration()
+    {
+        _rawGyroRotation.Rotate(0f, -_calibrationYAngle, 0f, Space.World);
+    }
+
+    public void SetEnabled(bool value)
+    {
+        enabled = value;
+        if (value) StartCoroutine(CalibrateYAngle());
+    }
+}
