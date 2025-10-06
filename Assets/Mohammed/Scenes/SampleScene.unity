@@ -1137,6 +1137,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1991314837547017131, guid: db347abfa1d295348b3e4aa4a90ebaea, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -195
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991314837547017131, guid: db347abfa1d295348b3e4aa4a90ebaea, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 179
+      objectReference: {fileID: 0}
     - target: {fileID: 2201480351713982083, guid: db347abfa1d295348b3e4aa4a90ebaea, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.09700012
@@ -1181,6 +1189,18 @@ PrefabInstance:
       propertyPath: deathCanvas
       value: 
       objectReference: {fileID: 1571334808}
+    - target: {fileID: 4817800657815204138, guid: db347abfa1d295348b3e4aa4a90ebaea, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982694348072934440, guid: db347abfa1d295348b3e4aa4a90ebaea, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982694348072934440, guid: db347abfa1d295348b3e4aa4a90ebaea, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 84487d73ca4b791498332d8f6858417f, type: 3}
     - target: {fileID: 7262296932116923506, guid: db347abfa1d295348b3e4aa4a90ebaea, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1189,6 +1209,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7471284289591098674, guid: db347abfa1d295348b3e4aa4a90ebaea, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7471284289591098674, guid: db347abfa1d295348b3e4aa4a90ebaea, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5eda94a9dcf71e445ad17e3c065d1460, type: 3}
     - target: {fileID: 7760974009907379441, guid: db347abfa1d295348b3e4aa4a90ebaea, type: 3}
       propertyPath: m_Name
       value: Player manger
