@@ -9,6 +9,7 @@ public class GunRaycast : MonoBehaviour
     public float gunRange = 50f;
     public float fireRate = 0.5f;
     public float laserDuration = 0.05f;
+    public int scorePerEnemy = 1; // how much to add per enemy hit
 
     private LineRenderer laserLine;
     private float fireTimer;
@@ -20,7 +21,6 @@ public class GunRaycast : MonoBehaviour
 
     void Update()
     {
-        // update timer every frame
         fireTimer += Time.deltaTime;
     }
 
@@ -38,7 +38,19 @@ public class GunRaycast : MonoBehaviour
         if (Physics.Raycast(rayOrigin, playerCamera.transform.forward, out hit, gunRange))
         {
             laserLine.SetPosition(1, hit.point);
-            Destroy(hit.transform.gameObject); // destroy object on hit
+
+            // ✅ Only destroy if the object has tag "Enemy"
+            if (hit.transform.CompareTag("Enemy"))
+            {
+                Destroy(hit.transform.gameObject);
+
+                // ✅ Add score if score system exists
+                SimpleScoreWin scoreSystem = FindObjectOfType<SimpleScoreWin>();
+                if (scoreSystem != null)
+                {
+                    scoreSystem.AddScore(scorePerEnemy);
+                }
+            }
         }
         else
         {
