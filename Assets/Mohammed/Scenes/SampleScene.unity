@@ -1352,7 +1352,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: b262dc914454f7343bce930a41758b48, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1544,7 +1544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aeef26f71d97104ca15bd93ba2bc713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tup: {fileID: 8648032308441524908, guid: 750f1824df6733546a224fc7c15d19ae, type: 3}
+  tup: {fileID: 365187221498857988, guid: b15d875dc34ce2f4489b454caca6d391, type: 3}
 --- !u!4 &1208290396
 Transform:
   m_ObjectHideFlags: 0
@@ -1945,6 +1945,15 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 7320361977831038936, guid: 79467f6e6ab434a50a064154ddb5fba4, type: 3}
     - {fileID: 366750081791027644, guid: 79467f6e6ab434a50a064154ddb5fba4, type: 3}
+    - {fileID: 8627273195159575903, guid: 79467f6e6ab434a50a064154ddb5fba4, type: 3}
+    - {fileID: 6770851010236865016, guid: 79467f6e6ab434a50a064154ddb5fba4, type: 3}
+    - {fileID: 5245202548722503482, guid: 79467f6e6ab434a50a064154ddb5fba4, type: 3}
+    - {fileID: 4506359397698166192, guid: 79467f6e6ab434a50a064154ddb5fba4, type: 3}
+    - {fileID: 2343885393053404320, guid: 79467f6e6ab434a50a064154ddb5fba4, type: 3}
+    - {fileID: 3224620873355646332, guid: 79467f6e6ab434a50a064154ddb5fba4, type: 3}
+    - {fileID: 6850925842695892854, guid: 79467f6e6ab434a50a064154ddb5fba4, type: 3}
+    - {fileID: 4711337267475095350, guid: 79467f6e6ab434a50a064154ddb5fba4, type: 3}
+    - {fileID: 5408243972189683803, guid: 79467f6e6ab434a50a064154ddb5fba4, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2855489786000716603, guid: 79467f6e6ab434a50a064154ddb5fba4, type: 3}
       insertIndex: 66
@@ -2034,7 +2043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aeef26f71d97104ca15bd93ba2bc713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tup: {fileID: 8648032308441524908, guid: 750f1824df6733546a224fc7c15d19ae, type: 3}
+  tup: {fileID: 365187221498857988, guid: b15d875dc34ce2f4489b454caca6d391, type: 3}
 --- !u!4 &1428475987
 Transform:
   m_ObjectHideFlags: 0
@@ -3034,7 +3043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aeef26f71d97104ca15bd93ba2bc713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tup: {fileID: 8648032308441524908, guid: 750f1824df6733546a224fc7c15d19ae, type: 3}
+  tup: {fileID: 365187221498857988, guid: b15d875dc34ce2f4489b454caca6d391, type: 3}
 --- !u!4 &1935358411
 Transform:
   m_ObjectHideFlags: 0
@@ -3244,6 +3253,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 214470390088273003, guid: db347abfa1d295348b3e4aa4a90ebaea, type: 3}
+      propertyPath: shootsound
+      value: 
+      objectReference: {fileID: 945371372}
     - target: {fileID: 463838666359941376, guid: db347abfa1d295348b3e4aa4a90ebaea, type: 3}
       propertyPath: m_Positions.Array.data[1].z
       value: 0

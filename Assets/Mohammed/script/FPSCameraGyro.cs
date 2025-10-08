@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(LineRenderer))]
+
 public class GunRaycast : MonoBehaviour
 {
     public Camera playerCamera;
@@ -9,7 +9,8 @@ public class GunRaycast : MonoBehaviour
     public float gunRange = 50f;
     public float fireRate = 0.5f;
     public float laserDuration = 0.05f;
-    public int scorePerEnemy = 1; // how much to add per enemy hit
+    public int scorePerEnemy = 1;
+    public AudioSource shootsound;
 
     private LineRenderer laserLine;
     private float fireTimer;
@@ -24,10 +25,10 @@ public class GunRaycast : MonoBehaviour
         fireTimer += Time.deltaTime;
     }
 
-    // 🔫 Call this method from a UI Button
+    
     public void FireGun()
     {
-        if (fireTimer < fireRate) return; // cooldown
+        if (fireTimer < fireRate) return; 
         fireTimer = 0f;
 
         Vector3 rayOrigin = playerCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
@@ -39,12 +40,13 @@ public class GunRaycast : MonoBehaviour
         {
             laserLine.SetPosition(1, hit.point);
 
-            // ✅ Only destroy if the object has tag "Enemy"
+            
             if (hit.transform.CompareTag("Enemy"))
             {
                 Destroy(hit.transform.gameObject);
+                shootsound.Play();
 
-                // ✅ Add score if score system exists
+                
                 SimpleScoreWin scoreSystem = FindObjectOfType<SimpleScoreWin>();
                 if (scoreSystem != null)
                 {
