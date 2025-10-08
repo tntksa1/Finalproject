@@ -71,12 +71,8 @@ public class HealthSystem : MonoBehaviour
 
         if (deathCanvas != null)
             deathCanvas.SetActive(true);
-
-        // Example: disable player movement
-        // GetComponent<PlayerMove>().enabled = false;
-
-        // Example: reload scene after delay
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+         Time.timeScale = 0f;
+        
     }
 
 

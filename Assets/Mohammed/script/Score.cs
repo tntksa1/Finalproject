@@ -38,6 +38,7 @@ public class SimpleScoreWin : MonoBehaviour
     {
         hasWon = true;
         win.gameObject.SetActive(true);
+         Time.timeScale = 0f;
         Debug.Log("You Win!");
     }
 }
