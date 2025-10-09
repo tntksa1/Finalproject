@@ -12,9 +12,8 @@ public class GyroCamera : MonoBehaviour
 
     // SETTINGS
     [SerializeField] private float _smoothing = 0.1f;
-    [SerializeField] private Transform player;   // reference to player
-    [SerializeField] private Vector3 offset = new Vector3(0f, 2f, -4f); // camera offset
-
+    [SerializeField] private Transform player;   
+    [SerializeField] private Vector3 offset = new Vector3(0f, 2f, -4f);
     private IEnumerator Start()
     {
         Input.gyro.enabled = true;
